@@ -8,9 +8,15 @@
  },
  "id": "rebornecc.creatorinsight",
  "name": "Creator Insight",
- "version": "v1.2.0",
+ "version": "v1.2.2",
  "developer": "RebornECC",
  "description": "A scan of your level inside the editor pause menu: object and trigger counts, a map of used Group IDs, the first free Group ID and Item ID with one-tap copy.",
+ "tags": [
+  "editor",
+  "utility",
+  "interface",
+  "offline"
+ ],
  "settings": {
   "warn-objects": {
    "type": "int",
