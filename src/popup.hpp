@@ -35,8 +35,8 @@ namespace ci {
         d->drawPolygon(v, 4, f4(col), 0.f, f4(col));
     }
 
-    // flat rounded button; its label has tag 7 so the text can change later
-    inline CCNode* pill(char const* text, ccColor3B fill, ccColor3B ink, float w = 84.f, float h = 26.f) {
+    
+inline CCNode* pill(char const* text, ccColor3B fill, ccColor3B ink, float w = 84.f, float h = 26.f) {
         auto n = CCNode::create();
         n->setContentSize({w, h});
         n->setAnchorPoint({0.5f, 0.5f});
