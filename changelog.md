@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.2
+- Added tags: editor, utility, interface, offline
+
+## v1.2.1
+- Pause menu button now uses the stock button sprite (crash fix attempt)
+
 ## v1.2.0
 - Panel redesigned to match the logo: light wall, slanted tiles, slate plate
 - Own flat buttons instead of the stock green ones
