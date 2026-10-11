@@ -1,0 +1,24 @@
+{
+ "geode": "5.11.1",
+ "gd": {
+  "win": "*",
+  "android": "*",
+  "mac": "*",
+  "ios": "*"
+ },
+ "id": "rebornecc.creatorinsight",
+ "name": "Creator Insight",
+ "version": "v1.2.0",
+ "developer": "RebornECC",
+ "description": "A scan of your level inside the editor pause menu: object and trigger counts, a map of used Group IDs, the first free Group ID and Item ID with one-tap copy.",
+ "settings": {
+  "warn-objects": {
+   "type": "int",
+   "name": "Heavy level warning",
+   "description": "Show a warning when the level has more objects than this.",
+   "default": 50000,
+   "min": 1000,
+   "max": 200000
+  }
+ }
+}
