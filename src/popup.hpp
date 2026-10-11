@@ -35,8 +35,7 @@ namespace ci {
         d->drawPolygon(v, 4, f4(col), 0.f, f4(col));
     }
 
-    
-inline CCNode* pill(char const* text, ccColor3B fill, ccColor3B ink, float w = 84.f, float h = 26.f) {
+    inline CCNode* pill(char const* text, ccColor3B fill, ccColor3B ink, float w = 84.f, float h = 26.f) {
         auto n = CCNode::create();
         n->setContentSize({w, h});
         n->setAnchorPoint({0.5f, 0.5f});
@@ -53,6 +52,35 @@ inline CCNode* pill(char const* text, ccColor3B fill, ccColor3B ink, float w = 8
         return n;
     }
 
+    inline CCNode* logoButton(float size) {
+        auto n = CCNode::create();
+        n->setContentSize({size, size});
+        n->setAnchorPoint({0.5f, 0.5f});
+        auto d = CCDrawNode::create();
+        n->addChild(d);
+        roundRect(d, 0.f, -2.f, size, size, 4.f, f4(INK, 0.4f));
+        roundRect(d, -1.5f, -1.5f, size + 3.f, size + 3.f, 5.f, f4(INK));
+        roundRect(d, 0.f, 0.f, size, size, 4.f, f4(SNOW));
+        float k = size / 1000.f;
+        auto P = [&](float x, float y) { return CCPoint{x * k, (1000.f - y) * k}; };
+        tri(d, P(40, 40), P(420, 40), P(40, 340), MUS);
+        quad(d, P(470, 40), P(960, 40), P(960, 210), P(270, 410), GRY);
+        quad(d, P(130, 520), P(540, 390), P(810, 670), P(430, 900), SLT);
+        quad(d, P(860, 250), P(960, 250), P(960, 610), P(850, 520), MUS);
+        tri(d, P(40, 640), P(320, 940), P(40, 940), MUS);
+        quad(d, P(480, 940), P(960, 940), P(960, 720), P(850, 720), GRY);
+        tri(d, P(40, 380), P(250, 430), P(40, 520), GRY);
+        auto c = P(470, 655);
+        for (int i = 0; i < 2; i++) {
+            auto l = CCLabelBMFont::create("CI", "bigFont.fnt");
+            l->setScale(size * 0.0085f);
+            l->setColor(i == 0 ? INK : SNOW);
+            l->setPosition({c.x + (i == 0 ? 1.f : 0.f), c.y + (i == 0 ? -1.f : 0.f)});
+            n->addChild(l, 2 - i);
+        }
+        return n;
+    }
+
     inline void setPill(CCNode* n, char const* text) {
         if (auto l = typeinfo_cast<CCLabelBMFont*>(n->getChildByTag(7))) {
             l->setString(text);
@@ -64,6 +92,11 @@ inline CCNode* pill(char const* text, ccColor3B fill, ccColor3B ink, float w = 8
 }
 
 class InsightPopup : public geode::Popup {
+public:
+    static inline int s_open = 0;
+    InsightPopup() { s_open++; }
+    ~InsightPopup() override { s_open--; }
+
 protected:
     LevelEditorLayer* m_lel = nullptr;
     CCNode* m_content = nullptr;
