@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.3.1
+- The editor button now looks like the mod logo
+
+## v1.3.0
+- Crash fix: the pause menu is no longer touched at all
+- Draggable Insight button inside the editor, position is remembered
+
 ## v1.2.2
 - Added tags: editor, utility, interface, offline
 
